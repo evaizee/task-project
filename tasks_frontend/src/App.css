@@ -57,6 +57,7 @@
   height: 100px;
   background-color: yellow;
   margin: 10px auto;
+  cursor: move;
 }
 
 .inProgress {
@@ -67,6 +68,10 @@
   top: 10;
   background-color: #EEEEEE;
   border-right: 2px dotted red;
+}
+
+.newTaskButton {
+  @apply bg-blue-500 text-white font-bold py-2 px-4 rounded hover:bg-red-500;
 }
 
 @keyframes App-logo-spin {

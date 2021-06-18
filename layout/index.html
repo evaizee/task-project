@@ -1,0 +1,85 @@
+<!-- index.html -->
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+      .task-container {
+            display: flex;
+            flex-wrap: nowrap;
+            background-color: blanchedalmond;
+            padding: 5px;
+            align-content: space-between;
+      }
+
+      .flex-container {
+            background-color: cadetblue;
+      }
+  </style>
+</head>
+<body>
+  <div class="flex flex-row">
+    <div class="flex flex-grow">
+      <input class="bg-gray-200 flex-grow appearance-none border-2 border-gray-200 py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-grey-500" id="inline-full-name" type="text" placeholder="Insert title here">
+    </div>
+    
+    <div class="flex flex-grow-none relative">
+      <select class="block appearance-none w-full bg-gray-200 text-gray-700 py-3 px-4 pr-8 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
+        <option>Sort by Date</option>
+        <option>Sort by Content</option>
+      </select>
+      <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+        <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+      </div>
+    </div>
+    <div class="flex flex-grow-none">
+      <input class="bg-red flex-grow appearance-none border-2 border-gray-200 py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-grey-500" id="inline-full-name" type="text" placeholder="Search here">
+    </div>
+  </div>
+  <div class="flex flex-col md:flex-row flex-nowrap mx-5 mb-4 px-4 mt-7 sm:space-y-2 md:space-x-6">
+    <div class="flex-container flex flex-col flex-grow rounded-md mb-4 p-4">
+        <h1 class="my-3 text-2xl font-bold">Hello, Tailwind!</h1>
+        <p class="my-5">Let's learn how to use this new CSS framework.</p>
+        <button class="text-white font-bold bg-blue-600 hover:bg-blue-800 py-2 px-4 rounded">
+            Button!
+        </button>
+    </div>
+    <div class="flex-container flex flex-grow flex-row rounded-md mb-4 p-4">
+      <div class="rounded bg-grey-light p-2 flex flex-col flex-grow">
+        <div class="flex justify-between py-1 flex-grow">
+          <h3 class="text-sm">New landing page</h3>
+          <svg class="h-4 fill-current text-grey-dark cursor-pointer" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 10a1.999 1.999 0 1 0 0 4 1.999 1.999 0 1 0 0-4zm7 0a1.999 1.999 0 1 0 0 4 1.999 1.999 0 1 0 0-4zm7 0a1.999 1.999 0 1 0 0 4 1.999 1.999 0 1 0 0-4z"/></svg>
+        </div>
+        <div class="text-sm mt-2">
+          <div class="bg-white p-2 rounded mt-1 border-b border-grey cursor-pointer hover:bg-grey-lighter">
+              Do a mobile first layout
+        </div>
+          
+        <div class="bg-white p-2 rounded mt-1 border-b border-grey cursor-pointer hover:bg-grey-lighter">
+              Check the meta tags
+        </div>
+          
+        <div class="bg-white p-2 rounded mt-1 border-b border-grey cursor-pointer hover:bg-grey-lighter">
+              Check the responsive layout on all devices
+        </div>
+        <textarea class="bg-gray-200 p-2 rounded mt-1 border-2 border-grey w-full focus:border-indigo-400 focus:bg-white" placeholder="input"></textarea>
+      </div>
+    </div>
+  </div>
+  <!-- <div id="container" class="flex flex-col">
+    <div id="header" class="p-4 bg-gray-400 flex">Header</div>
+
+    <div id="main" class="flex flex-col md:flex-row flex-grow">
+        <div class="p-4 bg-gray-300 flex">
+            Sidebar
+        </div>
+        <div class="p-4 bg-gray-100 flex-grow">
+            Content
+        </div>
+    </div>
+
+    <div id="footer" class="p-4 bg-gray-500">Footer</div>
+  </div> -->
+</body>
+</html>

@@ -27,6 +27,9 @@ func handleRouting() {
 	router.HandleFunc("/api/task/{id}", updateTask).Methods("PUT", "OPTIONS")
 	router.HandleFunc("/api/task/{id}", getTask).Methods("GET", "OPTIONS")
 
+	router.HandleFunc("/api/board", createBoard).Methods("POST", "OPTIONS")
+	//router.HandleFunc("/api/board", getBoard).Methods("GET", "OPTIONS")
+
 	fmt.Println("Server Started")
 	log.Fatal(http.ListenAndServe(":8050", router))
 }
@@ -68,18 +71,25 @@ func getTask (w http.ResponseWriter, r *http.Request) {
 	response := Response{task, "success"}
 	jsonResponse, jsonError := json.Marshal(response)
 	
-	// jsonResponse, jsonError := json.Marshal(struct {
-	// 	Task models.Task
-	// 	Message string
-	// } {
-	// 	Task: task,
-	// 	Message: "hehe",
-	// })
-
 	if jsonError!=nil {
 		log.Fatal(jsonError)
 	}
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
 	w.Write(jsonResponse)
+}
+
+func createBoard (w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Context-Type", "application/x-www-form-urlencoded")
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+	w.Header().Set("Access-Control-Allow-Methods", "POST")
+	w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
+
+	var board dashboard.Board
+	board.Name = r.FormValue("name")
+	board.OwnerPassword = r.FormValue("owner_password")
+	board.GuestPassword = r.FormValue("guest_password")
+	board.Permission,_ = strconv.ParseInt(r.FormValue("permission"), 10, 64)
+
+	dashboard.CreateBoard(board)
 }
