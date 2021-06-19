@@ -19,18 +19,7 @@ class Task extends Component {
 
         this.endEdit = this.endEdit.bind(this)
         this.startEdit = this.startEdit.bind(this)
-        //this.updateName = this.updateName.bind(this)
     }
-
-    // componentDidMount() {
-    //     this.setState({type: this.props.type, id:this.props.id, name:this.props.name, color:this.props.color})
-    // }
-
-    // shouldComponentUpdate(nextProps, nextState) {
-    //     return (this.props.type !== nextProps.type) || (this.state.isEdit !== nextState.isEdit)
-    // }
-
-    
 
     onDragStart = (event, id, taskType) => {
         console.log("drag start ", id, taskType)
@@ -73,16 +62,6 @@ class Task extends Component {
         }
 
         return(
-
-            // <div key={this.props.id}
-            //     onDragStart = {(event) => this.onDragStart(event, this.props.id, this.props.type) }
-            //     draggable
-            //     className="draggable"
-            //     style = {{backgroundColor: this.props.color}}
-            // >
-            //     {display} <br></br>
-            //     {button}
-            // </div>
             <div className="flex-container rounded-md mb-4 p-4" onDragStart = {(event) => this.onDragStart(event, this.props.id, this.props.type)} draggable>
                 <div className="rounded bg-grey-light p-2 flex flex-col flex-grow">
                     <div className="flex justify-between py-1 flex-grow">

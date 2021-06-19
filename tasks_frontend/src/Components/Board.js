@@ -28,7 +28,6 @@ class Board extends Component {
     }
 
     onDragOver = (event) => {
-        const 
 	    event.preventDefault();
 	}
 
@@ -50,20 +49,11 @@ class Board extends Component {
         this.setState({ [e.target.name]: e.target.value });
     }
 
-    // endCreateNew = () => {
-    //     this.setState({
-    //         isCreateNew: false
-    //     })
-    // }
-
     render() {
         var taskIds = [
             {'id': 1, 'type': 'done'},
             {'id': 2, 'type': 'inProgress'}
         ];
-        // this.setState({
-        //     category: [...this.state.category, taskIds]
-        // })
 
         var classifiedTasks = []
         
@@ -96,28 +86,6 @@ class Board extends Component {
         //console.log(boardView)
 
         return (
-            // <div className="content-center">
-            //     <h2 className="head">
-            //         List of Drag and Drop
-            //     </h2>
-            //     <div>
-            //         <button class="newTaskButton" type="button" name="new-task" onClick={this.startCreateNew}>Create New Task</button>
-            //     </div>
-            //     <div className="inProgress"
-            //         onDragOver={(event) => this.onDragOver(event)}
-            //         onDrop={(event) => this.onDrop(event, "inProgress")}
-            //     >
-            //         <span className="group-header">In Progress</span>
-            //         {tasks.inProgress}
-            //     </div>
-            //     <div className="droppable"
-            //         onDragOver={(event) => this.onDragOver(event)}
-            //         onDrop={(event) => this.onDrop(event, "Done")}
-            //     >
-            //         <span className="group-header">Done</span>
-            //         {tasks.Done}
-            //     </div>
-            // </div>
             <div>
                 <div className="flex flex-row">
                     <div className="flex flex-grow">
