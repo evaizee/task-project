@@ -1,12 +1,8 @@
-import { ADD_TASK, UPDATE_NAME, UPDATE_TYPE } from "../Actions/types"
+import { ADD_TASK, GET_TASKS, UPDATE_NAME, UPDATE_TYPE } from "../Actions/types"
 
 const initialState = {
-    tasks: [
-        {id: 1, name:"Read book",type:"1", color: "red", isEdit:false},
-        {id: 2, name:"Pay bills", type:"1", color:"green", isEdit:false},
-        {id: 3, name:"Go to the gym", type:"2", color:"blue", isEdit:false},
-        {id: 4, name:"Play baseball with us", type:"2", color:"green", isEdit:false}
-    ]
+    tasks: [],
+    loading: true,
 }
 
 export default function reducer(state = initialState, action) {
@@ -34,6 +30,12 @@ export default function reducer(state = initialState, action) {
                     ? { ...task, type: action.status}
                     : task
                 )
+            }
+        case GET_TASKS:
+            return {
+                ...state,
+                tasks: action.payload,
+                loading: false,
             }
       default:
         return state

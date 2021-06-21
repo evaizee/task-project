@@ -1,3 +1,5 @@
 export const ADD_TASK = "ADD_TASK"
 export const UPDATE_NAME = "UPDATE_NAME"
 export const UPDATE_TYPE = "UPDATE_TYPE"
+export const UPDATE_HEADER = "UPDATE_HEADER"
+export const GET_TASKS = "GET_TASKS"

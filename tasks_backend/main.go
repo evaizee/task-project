@@ -24,9 +24,9 @@ func handleRouting() {
 	router := mux.NewRouter().StrictSlash(true)
 	router.HandleFunc("/", homePage)
 	router.HandleFunc("/api/task", createTask).Methods("POST", "OPTIONS")
+	router.HandleFunc("/api/task/all", getAllTasks).Methods("GET", "OPTIONS")
 	router.HandleFunc("/api/task/{id}", updateTask).Methods("PUT", "OPTIONS")
 	router.HandleFunc("/api/task/{id}", getTask).Methods("GET", "OPTIONS")
-
 	router.HandleFunc("/api/board", createBoard).Methods("POST", "OPTIONS")
 	//router.HandleFunc("/api/board", getBoard).Methods("GET", "OPTIONS")
 
@@ -92,4 +92,18 @@ func createBoard (w http.ResponseWriter, r *http.Request) {
 	board.Permission,_ = strconv.ParseInt(r.FormValue("permission"), 10, 64)
 
 	dashboard.CreateBoard(board)
+}
+
+func getAllTasks (w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+	task := dashboard.GetAllTasks()
+	response := Response{task, "success"}
+	jsonResponse, jsonError := json.Marshal(response)
+	
+	if jsonError!=nil {
+		log.Fatal(jsonError)
+	}
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusOK)
+	w.Write(jsonResponse)
 }

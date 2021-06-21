@@ -4,7 +4,7 @@ import { updateName } from '../Actions/taskActions'
 
 const mapStateToProps = (state) => ({
     tasks: state.tasks,
-    user: state.user
+    user: state.user,
 })
 
 

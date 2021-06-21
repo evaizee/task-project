@@ -1,4 +1,5 @@
-import { ADD_TASK, UPDATE_NAME, UPDATE_TYPE } from "./types"
+import { ADD_TASK, GET_TASKS, UPDATE_NAME, UPDATE_TYPE } from "./types"
+import axios from 'axios'
 
 export const addTask = task => {
   return {
@@ -20,5 +21,18 @@ export const updateType = (id, status) => {
     type: UPDATE_TYPE,
     status,
     id,
+  }
+}
+
+export const getTasks = () => async dispatch => {
+  try {
+    const res = await axios.get(`http://localhost:8050/api/task/all`)
+    console.log(res)
+    dispatch( {
+      type: GET_TASKS,
+      payload: res.data.Payload
+    })
+  } catch(e) {
+    console.log(e)
   }
 }

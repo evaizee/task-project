@@ -62,6 +62,31 @@ func GetOneTask(id string) (Task) {
 	return result
 }
 
+func GetAllTasks() ([]Task) {
+	db, err := connect()
+    if err != nil {
+        log.Fatal(err.Error())
+    }
+
+	result, err1 := db.Collection("tasks").Find(ctx, bson.M{})
+	if err1 != nil {
+		log.Fatal(err)
+	}
+
+	var tasks []Task
+	for result.Next(ctx) {
+		var task Task
+		err := result.Decode(&task)
+		if err != nil {
+			log.Fatal(err)
+		}
+
+		tasks = append(tasks, task)
+	}
+
+	return tasks
+}
+
 func UpdateOneTask(id string, name string, taskType int) {
 	db, err := connect()
     if err != nil {
