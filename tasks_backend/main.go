@@ -60,6 +60,9 @@ func updateTask(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
 	taskType,_ := strconv.ParseInt(r.FormValue("type"), 10, 64)
 	params := mux.Vars(r)
+	println(params)
+	println(taskType)
+	println(r.FormValue("name"))
 
 	dashboard.UpdateOneTask(params["id"], r.FormValue("name"), int(taskType))
 }

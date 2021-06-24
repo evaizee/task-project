@@ -12,26 +12,29 @@ export default function reducer(state = initialState, action) {
                tasks:[action.payload, ...state.tasks]
             }
         case UPDATE_NAME:
-            console.log("update task")
-
+            console.log("update name")
+            console.log(action)
             return {
                 tasks: state.tasks.map((task) => 
-                    task.id === action.id
+                    task._id === action.id
                     ? { ...task, name: action.name}
                     : task
-                )
+                ),
+                loading: false
             }
         case UPDATE_TYPE:
-            console.log("update task")
+            console.log("update type")
 
             return {
                 tasks: state.tasks.map((task) => 
-                    task.id === action.id
+                    task._id === action.id
                     ? { ...task, type: action.status}
                     : task
-                )
+                ),
+                loading: false
             }
         case GET_TASKS:
+            console.log("get tasks")
             return {
                 ...state,
                 tasks: action.payload,

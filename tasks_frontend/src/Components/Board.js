@@ -66,7 +66,7 @@ class Board extends Component {
             console.log(this.props.tasks)
             this.props.tasks.forEach ((task) => {
                 classifiedTasks[task.type].push(
-                    <Task key={task.id} {...task} updateName={this.props.updateTask} />
+                    <Task key={task._id} {...task} updateName={this.props.updateTask} />
                 )
             })
 
@@ -115,6 +115,7 @@ class Board extends Component {
                 </div>
             )
         } else {
+            console.log("loading")
             return (
                 <div></div>
             )

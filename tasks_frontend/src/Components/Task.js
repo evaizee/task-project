@@ -24,6 +24,7 @@ class Task extends Component {
     onDragStart = (event, id, taskType) => {
         console.log("drag start ", id, taskType)
         event.dataTransfer.setData("id", id)
+        event.dataTransfer.setData("type", taskType)
     }
 
     startEdit () {
@@ -33,8 +34,10 @@ class Task extends Component {
         })
     }
 
-    endEdit (id, name) {
-        this.props.updateName(parseInt(id), name)
+    endEdit (id, name, type) {
+        console.log(id)
+        console.log(name)
+        this.props.updateName(id, name, type)
         this.setState({
             isEdit: false
         })
@@ -46,16 +49,12 @@ class Task extends Component {
         })
     }
 
-    updateName = (id, name) => {
-        this.props.updateName(id, name)
-    }
-
     render() {
         let display
         let button
         if (this.state.isEdit === true) {
             display = <input type="text"  name="content-textarea" defaultValue={this.props.name} onChange={e => this.onNameChange(e.target.value)} />
-            button = <button type="button" name="exit-edit-button" onClick={(e) => this.endEdit(this.state.id, this.state.name)}>Stop Edit</button>
+            button = <button type="button" name="exit-edit-button" onClick={(e) => this.endEdit(this.props._id, this.state.name, this.props.type)}>Stop Edit</button>
         } else {
             display = this.props.name
             button = <button type="button" name="start-edit-button" onClick={this.startEdit}>Start Edit</button>
