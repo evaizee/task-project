@@ -21,10 +21,11 @@ class Task extends Component {
         this.startEdit = this.startEdit.bind(this)
     }
 
-    onDragStart = (event, id, taskType) => {
+    onDragStart = (event, id, taskType, name) => {
         console.log("drag start ", id, taskType)
         event.dataTransfer.setData("id", id)
-        event.dataTransfer.setData("type", taskType)
+        event.dataTransfer.setData("status", taskType)
+        event.dataTransfer.setData("name", name)
     }
 
     startEdit () {
@@ -61,7 +62,7 @@ class Task extends Component {
         }
 
         return(
-            <div className="flex-container rounded-md mb-4 p-4" onDragStart = {(event) => this.onDragStart(event, this.props.id, this.props.type)} draggable>
+            <div className="flex-container rounded-md mb-4 p-4" onDragStart = {(event) => this.onDragStart(event, this.props._id, this.props.type, this.props.name)} draggable>
                 <div className="rounded bg-grey-light p-2 flex flex-col flex-grow">
                     <div className="flex justify-between py-1 flex-grow">
                         <h3 className="text-sm"> {display} </h3>

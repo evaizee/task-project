@@ -32,9 +32,13 @@ class Board extends Component {
 	    event.preventDefault();
 	}
 
-    onDrop = (event, type) => {
-        let id = parseInt(event.dataTransfer.getData("id"))
-        this.props.updateType(id, type)
+    onDrop = (event, taskType) => {
+        let id = (event.dataTransfer.getData("id"))
+        let status = parseInt(event.dataTransfer.getData("status"))
+        let name = (event.dataTransfer.getData("name"))
+        console.log(id)
+        console.log(name)
+        this.props.updateType(id, name, taskType)
     }
 
     startCreateNew (task_type) {
@@ -65,6 +69,7 @@ class Board extends Component {
         if (this.props.loading === false) {
             console.log(this.props.tasks)
             this.props.tasks.forEach ((task) => {
+                console.log(task)
                 classifiedTasks[task.type].push(
                     <Task key={task._id} {...task} updateName={this.props.updateTask} />
                 )
